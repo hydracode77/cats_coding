@@ -1,0 +1,17 @@
+cat: 703,933
+zylinder: 130, 0
+sunglasses: 83, 362
+chain: 272, 609
+cowboy_hat: 31, 17
+crown: 84, 27
+ski_googles: 84, 309
+augenklappe: 189, 226
+monocle: 316, 361
+astronout_helmet: 0, 96
+police_hat = 129, 61
+
+old cat: 703, 826
+also altes + 107
+
+mögliche accessories
+mütze
