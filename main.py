@@ -1,9 +1,16 @@
 from PIL import Image
 from random import choice
 import time
+from instabot import Bot
+import shutil
+import os
+from pushbullet import Pushbullet
+API_KEY = "API_KEY"
+push_notification = Pushbullet(API_KEY)
 
-number_of_images = 10  # wie viele Images generiert werden sollen
 
+bot = Bot()  # Bot initialisieren
+bot.login(username="cats_coding", password="pwd") # anmelden
 
 class Accesories:
     sunglasses = Image.open("accessories/sunglasses.png").convert("RGBA")
@@ -35,16 +42,29 @@ class Cats:
     yellow = Image.open("cat_templates/yellow.png").convert("RGBA")
     list = [black, grey_brown, orange, purple, white, yellow]
 
+def convert_image(input_path, output_path): # Bild von png zu jpeg umwandeln, weil insta kein png mag
+    img = Image.open(input_path)
 
-# for i in range(0, number_of_images):
+    img_with_white_background = Image.new("RGB", (1026, 1026), "white")  # weißer hintergrund, welcher bissl größer ist als normales Bild
+    img_with_white_background.paste(img, (161, 46), mask=img.split()[3])  # Bild auf den Hintergrund in die Mitte platzieren, alphakanal verwenden
+
+    img_with_white_background.save(output_path, "JPEG") # bild als jpeg speichern
+
+
 while True:
-    cat_template = choice(Cats.list)  # damit bild nicht für nachfolgende Iterationen verändert wird
-    cat = cat_template.copy()  # dann eben nur copy verwenden
-    glass_acc = choice(Accesories.eyes_list)
-    chain_acc = choice(Accesories.medal_list)
-    hat_acc = choice(Accesories.hat_list)
+    try: shutil.rmtree("config"); print("Ordner config gelöscht")  # erstmal config vom letzten Uploaden löschen (sonst error)
+    except: pass
+    try: os.remove("result/katze_bild_converted.jpeg.REMOVE_ME"); print("katze_bild2.jpeg.REMOVE_ME gelöscht") # genauso auch das ding
+    except: pass
 
-    # Überlagerung der Bilder
+    cat_template = choice(Cats.list) # eine Katze zufällig aussuchen
+    cat = cat_template.copy()  # Kopie verwenden, damit es nicht für nachfolgende Iterationen verändert wird
+    glass_acc = choice(Accesories.eyes_list)  # eine Brille zuällig aussuchen
+    chain_acc = choice(Accesories.medal_list) # eine Medallie zufällig aussuchen
+    hat_acc = choice(Accesories.hat_list) # eine Kopfbedeckung zufällig aussuchen
+
+    # Accesories an richtiger Stelle auf Katze-bild platzieren
+    # Glasses
     if not glass_acc is None:
         if glass_acc == Accesories.eyes_list[0]:  # sunglasses
             cat.paste(glass_acc, (83, 362), glass_acc)
@@ -55,9 +75,11 @@ while True:
         elif glass_acc == Accesories.eyes_list[3]:  # ski googles
             cat.paste(glass_acc, (84, 309), glass_acc)
 
+    # Medallien
     if not chain_acc is None:
         cat.paste(chain_acc, (272, 609), chain_acc)
 
+    # Kopfbedeckungen
     if not hat_acc is None:
         if hat_acc == Accesories.hat_list[0]:  # zylinder
             cat.paste(hat_acc, (130, 0), hat_acc)
@@ -68,5 +90,18 @@ while True:
         elif hat_acc == Accesories.hat_list[3]: # police hat
             cat.paste(hat_acc, (129, 61), hat_acc)
 
-    # Bild exportieren
-    cat.save(f"result/katze_bild{i}.png", format="PNG")
+    try:
+        cat.save(f"result/katze_bild.png", format="PNG") # Bild exportieren
+        convert_image("result/katze_bild.png", "result/katze_bild_converted.jpeg") # Bild von jpeg zu png konvertieren mit white background
+    except:
+        push_notification.push_note("Fehler - save & convert", "Bei dem Insta-Bot Projekt gibt es ein Fehler im Bereich speichern und konvertieren des generierten Bildes.")
+
+    # Auf Insta hochladen
+    try:
+        bot.upload_photo("result/katze_bild_converted.jpeg", caption="Wieder mal ein schönes Bild, oder?")
+    except:
+        push_notification.push_note("Fehler - Upload", "Bei dem Insta-Bot Projekt gibt es ein Fehler beim Hochladen des Bildes.")
+
+    # nach upload 24h warten
+    # time.sleep(86400) # = 24 Stunden
+    time.sleep(120)
