@@ -103,5 +103,4 @@ while True:
         push_notification.push_note("Fehler - Upload", "Bei dem Insta-Bot Projekt gibt es ein Fehler beim Hochladen des Bildes.")
 
     # nach upload 24h warten
-    # time.sleep(86400) # = 24 Stunden
-    time.sleep(120)
+    time.sleep(86400) # = 24 Stunden
