@@ -10,7 +10,7 @@ push_notification = Pushbullet(API_KEY)
 
 
 bot = Bot()  # Bot initialisieren
-bot.login(username="cats_coding", password="pwd") # anmelden
+bot.login(username="cats_coding", password="password") # anmelden
 
 class Accesories:
     sunglasses = Image.open("accessories/sunglasses.png").convert("RGBA")
