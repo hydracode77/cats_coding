@@ -7,5 +7,6 @@ Bei Verbesserungsvorschlägen und Wünschen gerne an mich wenden.
 Tschüss und schönen Tag noch!
 
 
-Update 5. März 2024
+Update 5. März 2024:
+
 Durch technische Probleme (welche wahrscheinlich dem zugrunde liegen, dass Instagram solche Bots nicht besonders mag) ist das Projekt temporär inaktiv, solange das Problem noch besteht. (:
