@@ -7,8 +7,8 @@ Alle Vorlagen und der Code liegt anbei.
 Bei Verbesserungsvorschlägen und Wünschen gerne an mich wenden.
 Tschüss und schönen Tag noch!
 
-## [Instagram - cats_coding](https://www.instagram.com/cats_coding/)
-<img src="https://i.postimg.cc/wMQrFzvy/cats.png" alt="cats_coding_insta" width="380" height="360">
+## Instagram - cats_coding
+[<img src="https://i.postimg.cc/wMQrFzvy/cats.png" alt="cats_coding_insta" width="380" height="360">](https://www.instagram.com/cats_coding/)
 
 ## Update, 5. März 2024:
 Durch technische Probleme (welche wahrscheinlich dem zugrunde liegen, dass Instagram solche Bots nicht besonders mag) ist das Projekt temporär inaktiv, solange das Problem noch besteht. (:
