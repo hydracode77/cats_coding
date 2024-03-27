@@ -5,12 +5,12 @@ from instabot import Bot
 import shutil
 import os
 from pushbullet import Pushbullet
-API_KEY = "API_KEY"
+API_KEY = "abcde"
 push_notification = Pushbullet(API_KEY)
 
 
 bot = Bot()  # Bot initialisieren
-bot.login(username="cats_coding", password="password") # anmelden
+bot.login(username="cats_coding", password="12345") # anmelden
 
 class Accesories:
     sunglasses = Image.open("accessories/sunglasses.png").convert("RGBA")
@@ -26,7 +26,6 @@ class Accesories:
     cowboy_hat = Image.open("accessories/cowboy_hat.png").convert("RGBA")
     crown = Image.open("accessories/crown.png").convert("RGBA")
     police_hat = Image.open("accessories/police_hat.png").convert("RGBA")
-    # astronout_helmet = Image.open("accessories/astronout_helmet.png").convert("RGBA")
 
     eyes_list = [sunglasses, monocle, eye_patch, ski_googles, None]  # alle Accessoires auf Augenhöhe
     medal_list = [bronze_medal, silver_medal, gold_medal, None]  # alle am Chain, auch None damit Standard auch geht
