@@ -3,7 +3,7 @@ Das hier ist ein kleines Python-Projekt von mir, bei dem jeden Tag ein cartoonar
 
 ## Technische Umsetzung
 Als erstes sucht das Programm zufällig eine Katze als Basis aus dem Ordner "[cat_templates](https://github.com/hydracode77/cats_coding/tree/main/cat_templates)" aus. 
-Dann wird noch Zubehör, auch zufällig, aus dem Ordner "[assessories](https://github.com/hydracode77/cats_coding/tree/main/accessories)" ausgewählt und an der richtigen Stelle angefügt.
+Dann wird noch Zubehör, auch zufällig, aus dem Ordner "[accessories](https://github.com/hydracode77/cats_coding/tree/main/accessories)" ausgewählt und an der richtigen Stelle angefügt.
 Die Katze wird jetzt vor einen weißen Hintergrund gesetzt, das Bild wird ins richtige Verhältnis gebracht, zu .jpeg konvertiert und gespeichert.
 Anschließend wird es mit der caption "Wieder mal ein schönes Bild, oder?" hochgeladen.
 Dieser Vorgang wird dann nach 24h wiederholt.
